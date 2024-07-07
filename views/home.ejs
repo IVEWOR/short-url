@@ -19,6 +19,18 @@
         <input type="submit">
     </form>
 
+    <% if (locals.urls) { %>
+    <table>
+        <% urls.forEach(url => { %>
+        <tr>
+            <td><%= url.redirectURL %></td>
+            <td><%= url.shortID %></td>
+            <td><%= url.visitHistory.length %></td>
+        </tr>
+        <% }) %>
+    </table>
+    <% } %>
+
 </body>
 
 </html>
