@@ -1,10 +1,13 @@
 const express = require("express");
 const path = require("path");
 
+const URL = require("./models/url");
 const connectDB = require("./connect.db");
+
+// route imports
 const urlRoute = require("./routes/url");
 const staticRouter = require("./routes/staticRouter");
-const URL = require("./models/url");
+const userRoute = require("./routes/user");
 
 const app = express();
 
@@ -23,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", staticRouter);
 app.use("/url", urlRoute);
+app.use("/user", userRoute);
 
 app.get("/url/:shortID", async (req, res) => {
   const shortID = req.params.shortID;
